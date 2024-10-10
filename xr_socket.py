@@ -101,7 +101,7 @@ class Socket:
 
 			client.close()		# 关闭客户端
 			client = None
-			go.stop()
+			#go.stop()
 		go.stop()
 		server.close()
 
