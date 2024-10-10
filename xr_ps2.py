@@ -74,23 +74,23 @@ class PS2(object):
 
 		else:
 			if read_ps2 == cfg.PS2_KEY['PSB_PAD_UP']:  # 等于左侧按键上键
-				go.forward()
+				go.right()
 				time.sleep(0.02)
 				cfg.PS2_LASTKEY = read_ps2	 # 更新上一次的值
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_PAD_DOWN']:  # 等于左侧按键下键
-				go.back()
+				go.left()
 				time.sleep(0.02)
 				cfg.PS2_LASTKEY = read_ps2
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_PAD_LEFT']:  # 等于左侧按键左键
-				go.left()
+				go.back()
 				cfg.LIGHT_STATUS = cfg.TURN_LEFT
 				time.sleep(0.02)
 				cfg.PS2_LASTKEY = read_ps2
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_PAD_RIGHT']:  # 等于左侧按键右键
-				go.right()
+				go.forward()
 				cfg.LIGHT_STATUS = cfg.TURN_RIGHT
 				time.sleep(0.02)
 				cfg.PS2_LASTKEY = read_ps2
