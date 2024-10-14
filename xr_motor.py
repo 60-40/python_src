@@ -35,9 +35,9 @@ class RobotDirection(object):
 		"""
 		# print(speed)
 		if num == 1:  # 调节左侧
-			gpio.ena_pwm(speed)
+			gpio.ena_pwm(abs(speed))
 		elif num == 2:  # 调节右侧
-			gpio.enb_pwm(speed)
+			gpio.enb_pwm(abs(speed))
 
 	def motor_init(self):
 		"""

@@ -92,7 +92,7 @@ class Socket:
 						break
 					if data[0] == 0xff and data[len(data) - 1] == 0xff:  # 如果包头和包尾是0xff则符合小二科技通信协议
 						buf = []  # 定义一个列表
-						for i in range(1, len(data) - 1):  # 获取协议包中间3位的数据
+						for i in range(1, len(data)):  # 获取协议包中间3位的数据
 							buf.append(data[i])  # 往buf中添加数据
 						self.communication_decode(buf)  # 运行串口解析数据
 				except Exception as e:  # 接收出错
