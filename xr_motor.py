@@ -35,8 +35,18 @@ class RobotDirection(object):
 		"""
 		# print(speed)
 		if num == 1:  # 调节左侧
+			if speed >= 0:
+				self.m1m2_forward()
+			else
+				self.m1m2_reverse()
+				
 			gpio.ena_pwm(abs(speed))
 		elif num == 2:  # 调节右侧
+			if speed >= 0:
+				self.m3m4_forward()
+			else
+				self.m3m4_reverse()
+
 			gpio.enb_pwm(abs(speed))
 
 	def motor_init(self):
@@ -92,12 +102,12 @@ class RobotDirection(object):
 		"""
 		self.set_speed(1, abs(cfg.LEFT_SPEED))
 		self.set_speed(2, abs(cfg.RIGHT_SPEED))
-		if cfg.LEFT_SPEED > 0:
+		if cfg.LEFT_SPEED >= 0:
 			self.m1m2_forward()
 		else:
 			self.m1m2_reverse()
 
-		if cfg.RIGHT_SPEED > 0:
+		if cfg.RIGHT_SPEED >= 0:
 			self.m3m4_forward()
 		else:
 			self.m3m4_reverse()
