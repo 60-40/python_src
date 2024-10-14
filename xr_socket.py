@@ -92,7 +92,7 @@ class Socket:
 						break
 					if data[0] == 0xff and data[len(data) - 1] == 0xff:  # 如果包头和包尾是0xff则符合小二科技通信协议
 						buf = []  # 定义一个列表
-						for i in range(1, 4):  # 获取协议包中间3位的数据
+						for i in range(1, len(data) - 1):  # 获取协议包中间3位的数据
 							buf.append(data[i])  # 往buf中添加数据
 						self.communication_decode(buf)  # 运行串口解析数据
 				except Exception as e:  # 接收出错
@@ -146,12 +146,16 @@ class Socket:
 			cfg.SERVO_ANGLE_LAST = cfg.SERVO_ANGLE
 
 		elif buffer[0] == 0x02:  # 调节电机速度
-			if buffer[1] == 0x01:  # 调节左侧电机速度
+			if buffer[1] == 0x01:  # 调节左侧电机速度	
+				if buffer[3] > 0:
+					buffer[2] *= -1
 				cfg.LEFT_SPEED = buffer[2]
 				go.set_speed(1, cfg.LEFT_SPEED)	 # 设置左侧速度
 				go.save_speed()
 
-			elif buffer[1] == 0x02:  # 调节右侧电机速度
+			elif buffer[1] == 0x02:  # 调节右侧电机速度	
+				if buffer[3] > 0:
+					buffer[2] *= -1
 				cfg.RIGHT_SPEED = buffer[2]
 				go.set_speed(2, cfg.RIGHT_SPEED)  # 设置右侧速度
 				go.save_speed()

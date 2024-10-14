@@ -90,17 +90,24 @@ class RobotDirection(object):
 		"""
 		设置机器人运动方向为前进
 		"""
-		self.set_speed(1, cfg.LEFT_SPEED)
-		self.set_speed(2, cfg.RIGHT_SPEED)
-		self.m1m2_forward()
-		self.m3m4_forward()
+		self.set_speed(1, abs(cfg.LEFT_SPEED))
+		self.set_speed(2, abs(cfg.RIGHT_SPEED))
+		if cfg.LEFT_SPEED > 0:
+			self.m1m2_forward()
+		else:
+			self.m1m2_reverse()
+
+		if cfg.RIGHT_SPEED > 0:
+			self.m3m4_forward()
+		else:
+			self.m3m4_reverse()
 
 	def back(self):
 		"""
 		#设置机器人运动方向为后退
 		"""
-		self.set_speed(1, cfg.LEFT_SPEED)
-		self.set_speed(2, cfg.RIGHT_SPEED)
+		self.set_speed(1, abs(cfg.LEFT_SPEED))
+		self.set_speed(2, abs(cfg.RIGHT_SPEED))
 		self.m1m2_reverse()
 		self.m3m4_reverse()
 
@@ -108,8 +115,8 @@ class RobotDirection(object):
 		"""
 		#设置机器人运动方向为左转
 		"""
-		self.set_speed(1, cfg.LEFT_SPEED)
-		self.set_speed(2, cfg.RIGHT_SPEED)
+		self.set_speed(1, abs(cfg.LEFT_SPEED))
+		self.set_speed(2, abs(cfg.RIGHT_SPEED))
 		self.m1m2_reverse()
 		self.m3m4_forward()
 
@@ -117,8 +124,8 @@ class RobotDirection(object):
 		"""
 		#设置机器人运动方向为右转
 		"""
-		self.set_speed(1, cfg.LEFT_SPEED)
-		self.set_speed(2, cfg.RIGHT_SPEED)
+		self.set_speed(1, abs(cfg.LEFT_SPEED))
+		self.set_speed(2, abs(cfg.RIGHT_SPEED))
 		self.m1m2_forward()
 		self.m3m4_reverse()
 
