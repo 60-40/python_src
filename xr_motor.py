@@ -37,14 +37,14 @@ class RobotDirection(object):
 		if num == 1:  # 调节左侧
 			if speed >= 0:
 				self.m1m2_forward()
-			else
+			else:
 				self.m1m2_reverse()
 				
 			gpio.ena_pwm(abs(speed))
 		elif num == 2:  # 调节右侧
 			if speed >= 0:
 				self.m3m4_forward()
-			else
+			else:
 				self.m3m4_reverse()
 
 			gpio.enb_pwm(abs(speed))
