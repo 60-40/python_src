@@ -43,9 +43,9 @@ class RobotDirection(object):
 			gpio.ena_pwm(abs(speed))
 		elif num == 2:  # 调节右侧
 			if speed >= 0:
-				self.m3m4_forward()
-			else:
 				self.m3m4_reverse()
+			else:
+				self.m3m4_forward()
 
 			gpio.enb_pwm(abs(speed))
 
@@ -108,9 +108,9 @@ class RobotDirection(object):
 			self.m1m2_reverse()
 
 		if cfg.RIGHT_SPEED >= 0:
-			self.m3m4_forward()
-		else:
 			self.m3m4_reverse()
+		else:
+			self.m3m4_forward()
 
 	def back(self):
 		"""
