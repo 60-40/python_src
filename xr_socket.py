@@ -1,4 +1,4 @@
-# coding:utf-8
+t-dlp# coding:utf-8
 """
 树莓派WiFi无线视频小车机器人驱动源码
 作者：Sence
@@ -163,7 +163,7 @@ class Socket:
 		elif buffer[0] == 0x06:  # 设置颜色检测跟随功能中的跟随颜色
 			if buffer[1] == 0x01:
 				cfg.COLOR_INDEX = cfg.COLOR_FOLLOW_SET['red']		# 设置颜色检测颜色区间为红色
-				car_light.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['red'])	 # 设置车灯为红色，提示作用
+				car_light.set_ledgroup(cfg.CAR_LIGHT, 8, *cfg.COLOR['red'])	 # 设置车灯为红色，提示作用
 			elif buffer[1] == 0x02:
 				cfg.COLOR_INDEX = cfg.COLOR_FOLLOW_SET['green']
 				car_light.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['green'])
