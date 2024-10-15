@@ -51,6 +51,12 @@ class Car_light(object):
 		:param color:设置颜色，在config中COLOR可选对应颜色，只能设置已定义好的颜色
 		:return:
 		"""
+		if isinstance(color, tuple):
+			sendbuf = [0xff, group + 1, count, color[0], color[1], color[2], 0xff]
+			i2c.writedata(i2c.mcu_address, sendbuf)
+			time.sleep(0.005)
+			return
+
 		if 0 < count < 9 and 0 < group < 3 and color < 9:
 			sendbuf = [0xff, group + 1, count, color, 0xff]
 			i2c.writedata(i2c.mcu_address, sendbuf)

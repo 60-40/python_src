@@ -52,6 +52,8 @@ class Servo(object):
 		:return:
 		"""
 		angle = self.angle_limit(servoangle)
+		if servonum > 8 and servoangle > 80:
+			return
 		buf = [0xff, 0x01, servonum, angle, 0xff]
 		try:
 			i2c.writedata(i2c.mcu_address, buf)

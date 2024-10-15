@@ -78,7 +78,7 @@ POWER_LIGHT = 1  		# 设置电量灯组标志
 CAR_LIGHT = 2  			# 设置车灯组标志
 
 # RGB灯的颜色值设定，有且只有这几组灯的颜色，不可设置其他颜色
-COLOR = {'black': 0, 'red': (200, 100, 100), 'orange': 2, 'yellow': 3, 'green': 4, 'Cyan': 5,
+COLOR = {'black': 0, 'red': 0, 'orange': 2, 'yellow': 3, 'green': 4, 'Cyan': 5,
 		 'blue': 6, 'violet': 7, 'white': 8}
 
 LOGO = "XiaoR GEEK"  # OLED显示屏显示的信息是英文
