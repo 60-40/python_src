@@ -62,6 +62,13 @@ def cruising_mode():
 	"""
 	# print('pre_CRUISING_FLAG：{}'.format(cfg.PRE_CRUISING_FLAG))
 	time.sleep(0.001)
+	if cfg.SEND_IRF:
+		infrared.send_irf()
+		if cfg.CRUISING_FLAG == cfg.CRUISING_SET['send_distance']:
+			time.sleep(0.05)
+		else:
+			time.sleep(1)
+		
 	if cfg.PRE_CRUISING_FLAG != cfg.CRUISING_FLAG:  # 如果循环模式改变
 		cfg.LEFT_SPEED = cfg.LASRT_LEFT_SPEED  # 在切换其他模式的时候,恢复上次保存的速度值
 		cfg.RIGHT_SPEED = cfg.LASRT_RIGHT_SPEED

@@ -18,9 +18,10 @@ import xr_gpio as gpio
 import xr_config as cfg
 
 from xr_motor import RobotDirection
-
 go = RobotDirection()
 
+from xr_socket import Socket
+socket = Socket()
 
 class Infrared(object):
 	def __init__(self):
@@ -75,6 +76,16 @@ class Infrared(object):
 				cfg.LEFT_SPEED = 50
 				cfg.RIGHT_SPEED = 50
 				go.forward()		# 前进：只有中间传感器检测到障碍物
+
+	def send_irf(self):
+		send_info = 2 * gpio.digital_read(gpio.IRF_L)
+		send_info += gpio.digital_read(gpio.IRF_R)
+		buf = bytes([0xff, 0x31, 0x03, send_info, 0xff])
+		try:
+			socket.sendbuf(buf)
+		except Exception as e:  # 发送出错
+			print('send_distance error:', e)  # 打印出错信息
+	
 
 	def avoiddrop(self):
 		"""

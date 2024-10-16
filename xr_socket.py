@@ -318,6 +318,11 @@ class Socket:
 			elif buffer[1] == 0x03:  # 接收的是高音
 				beet3 = buffer[2]
 				beep.tone(beep.tone_all[cfg.TUNE][beet3 + 7], 0.5)
+		elif buffer[0] == 0x42:
+				if buffer[1] == 0x00:
+					cfg.SEND_IRF = False
+				if buffer[1] == 0x01:
+					cfg.SEND_IRF = True
 
 		elif buffer == [0xef, 0xef, 0xee]:
 			print("Heartbeat Packet!")

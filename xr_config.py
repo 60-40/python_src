@@ -20,6 +20,7 @@ from socket import *
 import numpy as np
 
 
+SEND_IRF = False
 CRUISING_FLAG = 0  			# 当前循环模式，不同标志位进入不同模式，由上位机软件下发不同模式来改变参数。
 PRE_CRUISING_FLAG = 0  		# 预循环模式
 CRUISING_SET = {'normal': 0, 'irfollow': 1, 'trackline': 2, 'avoiddrop': 3, 'avoidbyragar': 4, 'send_distance': 5,
