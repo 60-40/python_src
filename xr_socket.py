@@ -325,7 +325,7 @@ class Socket:
 					cfg.SEND_IRF = False
 				if buffer[1] == 0x01:
 					cfg.SEND_IRF = True
-		elif buffer[0] == 0x43
+		elif buffer[0] == 0x43:
 			ex = buffer[1]
 			ey = buffer[2]
 			control_robot(ex, ey)
