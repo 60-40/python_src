@@ -85,7 +85,8 @@ def start_pid_server():
 				time_end = time.time()
 				dt = time_end - time_start
             # Control the robot based on the current errors
-#        except ValueError:
+			except Exception as ex:
+				print(ex)
 #            print("Received invalid data.")
 
 # Close the socket when done
