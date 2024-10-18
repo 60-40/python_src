@@ -263,6 +263,7 @@ threads.append(t3)
 #t4 = threading.Thread(target=voice.run, args=())  	# 语音模块线程
 #threads.append(t4)
 t5 = threading.Thread(target=start_pid_server, args=())
+threads.append(t5)
 ti = threading.Timer(0.1, status)		# 新建一个定时器
 ti.start()		# 开启定时器
 
