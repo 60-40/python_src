@@ -45,9 +45,7 @@ def pid_control(e_x, e_y, dt):
 	return output_x, output_y
 
 # Main loop to control the robot
-def control_robot(e_x, e_y):
-	global time_end, dt
-
+def control_robot(e_x, e_y, dt):
 	if dt > 1:
 		dt = 0
 
@@ -59,38 +57,35 @@ def control_robot(e_x, e_y):
     
 	# Send values to the motors
 	go.set_speed(1, int(left_val))
-	gp.set_speed(2, int(right_val))
-
-	time_start = time_end
-	time_end = time.time()
-	dt = time_start - time_end
+	go.set_speed(2, int(right_val))
 
 	# Print the motor control values for debugging
 #	print(f"Left wheel: {left_val}, Right wheel: {right_val}")
+def start_pid_server():
 
 # Setup socket to receive e_x and e_y
-#sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-#robot_ip = '0.0.0.0'  # Listen on all interfaces
-#robot_port = 5000
-#sock.bind((robot_ip, robot_port))
+	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	robot_ip = '0.0.0.0'  # Listen on all interfaces
+	robot_port = 5000
+	sock.bind((robot_ip, robot_port))
+
+	while True:
+		data, addr = sock.recvfrom(1024)  # Buffer size is 1024 bytes
+		message = data.decode().split(',')
+		dt = 0
+   
+		if len(message) == 2:
+			try:
+				if dt > 1: dt = 0
+				e_x = float(message[0])
+				e_y = float(message[1])
 #
-#while True:
-#    data, addr = sock.recvfrom(1024)  # Buffer size is 1024 bytes
-#    message = data.decode().split(',')
-#    
-#    if len(message) == 2:
-#        try:
-#            e_x = float(message[0])
-#            e_y = float(message[1])
-#
-#            time_start = time.time()
-#            time_end = time.time()
-#            dt = time_end - time_start
-            
+				time_start = time.time()
+				control_robot(e_x, e_y, dt)
+				time_end = time.time()
+				dt = time_end - time_start
             # Control the robot based on the current errors
-#            control_robot(e_x, e_y, dt)
 #        except ValueError:
 #            print("Received invalid data.")
 
 # Close the socket when done
-#sock.close()

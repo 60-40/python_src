@@ -54,6 +54,7 @@ i2c = I2c()
 from xr_voice import Voice
 voice = Voice()
 
+from pid import start_pid_server
 
 def cruising_mode():
 	"""
@@ -261,7 +262,7 @@ t3 = threading.Thread(target=socket.tcp_server, args=())  # 新建wifi tcp通信
 threads.append(t3)
 #t4 = threading.Thread(target=voice.run, args=())  	# 语音模块线程
 #threads.append(t4)
-
+t5 = threading.Thread(target=start_pid_server, args=())
 ti = threading.Timer(0.1, status)		# 新建一个定时器
 ti.start()		# 开启定时器
 
