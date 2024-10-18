@@ -28,6 +28,8 @@ go = RobotDirection()
 from xr_servo import Servo
 servo = Servo()
 
+from pid import control_robot
+
 from xr_car_light import Car_light
 car_light = Car_light()
 
@@ -323,6 +325,10 @@ class Socket:
 					cfg.SEND_IRF = False
 				if buffer[1] == 0x01:
 					cfg.SEND_IRF = True
+		elif buffer[0] == 0x43
+			ex = buffer[1]
+			ey = buffer[2]
+			control_robot(ex, ey)
 
 		elif buffer == [0xef, 0xef, 0xee]:
 			print("Heartbeat Packet!")
