@@ -253,14 +253,14 @@ car_light.init_led() 	# 车灯秀
 time.sleep(0.1)
 
 threads = []  # 创建一个线程序列
-t1 = threading.Thread(target=camera.run, args=())  # 摄像头数据收集处理线程
-threads.append(t1)  # 将线程添加到线程队列中
-t2 = threading.Thread(target=socket.bluetooth_server, args=())  # 新建蓝牙线程
-threads.append(t2)
+#t1 = threading.Thread(target=camera.run, args=())  # 摄像头数据收集处理线程
+#threads.append(t1)  # 将线程添加到线程队列中
+#t2 = threading.Thread(target=socket.bluetooth_server, args=())  # 新建蓝牙线程
+#threads.append(t2)
 t3 = threading.Thread(target=socket.tcp_server, args=())  # 新建wifi tcp通信线程
 threads.append(t3)
-t4 = threading.Thread(target=voice.run, args=())  	# 语音模块线程
-threads.append(t4)
+#t4 = threading.Thread(target=voice.run, args=())  	# 语音模块线程
+#threads.append(t4)
 
 ti = threading.Timer(0.1, status)		# 新建一个定时器
 ti.start()		# 开启定时器
