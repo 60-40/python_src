@@ -77,6 +77,7 @@ def start_pid_server():
 		if len(message) == 2:
 			try:
 				if dt > 1: dt = 0
+				if dt == 0: dt = 0.001
 				e_x = float(message[0])
 				e_y = float(message[1])
 #
