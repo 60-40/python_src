@@ -18,7 +18,7 @@ import time
 def avoid_walls():
 	while True:  
 		distance = ultrasonic.get_distance()
-		if int(distance) < 20:
+		if int(distance) < 20 and distance != 0:
 			print(distance)
 			lock.acquire()
 			go.stop()
