@@ -77,6 +77,12 @@ class Infrared(object):
 				cfg.RIGHT_SPEED = 50
 				go.forward()		# 前进：只有中间传感器检测到障碍物
 
+	def get_lr(self):
+		L =  gpio.digital_read(gpio.IRF_L)
+		R = gpio.digital_read(gpio.IRF_R)
+		return L, R
+
+	
 	def send_irf(self):
 		send_info = 2 * gpio.digital_read(gpio.IRF_L)
 		send_info += gpio.digital_read(gpio.IRF_R)

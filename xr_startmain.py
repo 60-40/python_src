@@ -37,6 +37,8 @@ camera = Camera()
 from xr_function import Function
 function = Function()
 from xr_oled import Oled
+from xr_avoid_walls import avoid_walls
+90
 try:
     oled = Oled()
 except:
@@ -264,6 +266,8 @@ threads.append(t3)
 #threads.append(t4)
 t5 = threading.Thread(target=start_pid_server, args=())
 threads.append(t5)
+t6 = threading.Thread(target=avoid_walls, args=())
+threads.append(t6)
 ti = threading.Timer(0.1, status)		# 新建一个定时器
 ti.start()		# 开启定时器
 
@@ -278,7 +282,7 @@ for t in threads:
 	time.sleep(0.05)
 # print("theads %s start..." %t)
 print("all theads start...>>>>>>>>>>>>")
-servo.store()		# 恢复小车保存的舵机角度
+#servo.store()		# 恢复小车保存的舵机角度
 go.motor_init()		# 恢复小车保存的电机速度
 while True:
 	'''
