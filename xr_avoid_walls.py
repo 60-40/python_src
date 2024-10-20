@@ -24,9 +24,9 @@ def avoid_walls():
 			cfg.LEFT = 30
 			cfg.RIGHT = 30
 			go.back()
-			time.sleep(0.15)
+			time.sleep(0.35)
 			go.left()
-			time.sleep(0.1)
+			time.sleep(0.2)
 			go.stop()
 			lock.release()
 		l, r = inf.get_lr()
@@ -36,7 +36,7 @@ def avoid_walls():
 			cfg.LEFT = 30
 			cfg.RIGHT = 30
 			go.back()
-			time.sleep(0.15)
+			time.sleep(0.35)
 			go.stop()
 			lock.release()
 		if l and not r:
@@ -45,9 +45,9 @@ def avoid_walls():
 			cfg.LEFT = 30
 			cfg.RIGHT = 30
 			go.back()
-			time.sleep(0.10)
+			time.sleep(0.30)
 			go.right()
-			time.sleep(0.1)
+			time.sleep(0.2)
 			go.stop()
 			lock.release()
 		if r and not l:
@@ -56,9 +56,9 @@ def avoid_walls():
 			cfg.LEFT = 30
 			cfg.RIGHT = 30
 			go.back()
-			time.sleep(0.10)
+			time.sleep(0.30)
 			go.left()
-			time.sleep(0.1)
+			time.sleep(0.2)
 			go.stop()
 			lock.release()
 		time.sleep(0.05)		
