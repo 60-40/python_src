@@ -72,7 +72,7 @@ class Servo(object):
 		恢复舵机角度
 		:return:
 		"""
-		cfg.ANGLE = cfgparser.get_data("servo", "angle")
+#		cfg.ANGLE = cfgparser.get_data("servo", "angle")
 		for i in range(0, 8):
 			cfg.SERVO_NUM = i + 1
 			cfg.SERVO_ANGLE = cfg.ANGLE[i]
