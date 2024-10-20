@@ -47,7 +47,7 @@ def avoid_walls():
 			cfg.RIGHT = 30
 			go.back()
 			time.sleep(0.30)
-			go.right()
+			go.left()
 			time.sleep(0.2)
 			go.stop()
 			lock.release()
@@ -58,7 +58,7 @@ def avoid_walls():
 			cfg.RIGHT = 30
 			go.back()
 			time.sleep(0.30)
-			go.left()
+			go.right()
 			time.sleep(0.2)
 			go.stop()
 			lock.release()
