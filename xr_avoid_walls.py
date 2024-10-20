@@ -25,7 +25,7 @@ def avoid_walls():
 			go.back()
 			time.sleep(0.15)
 			go.left()
-			time.spleep(0.1)
+			time.sleep(0.1)
 			go.stop()
 			lock.release()
 		l, r = inf.get_lr()
