@@ -18,6 +18,7 @@ import time
 def avoid_walls():
 	while True:       
 		if int(ultrasonic.get_distance()) < 20:
+			print(ultrasonic.get_distance())
 			lock.acquire()
 			go.stop()
 			cfg.LEFT = 30
