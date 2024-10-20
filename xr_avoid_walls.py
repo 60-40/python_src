@@ -46,7 +46,8 @@ def avoid_walls():
 			cfg.RIGHT = 30
 			go.back()
 			time.sleep(0.10)
-			go.right(0.1)
+			go.right()
+			time.sleep(0.1)
 			go.stop()
 			lock.release()
 		if r and not l:
