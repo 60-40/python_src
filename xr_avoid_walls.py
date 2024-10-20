@@ -1,5 +1,5 @@
 import threading
-lock = threading.Loke()
+lock = threading.Lock()
 
 from xr_motor import RobotDirection
 go = RobotDirection()
