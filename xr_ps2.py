@@ -27,6 +27,38 @@ go = RobotDirection()
 from xr_servo import Servo
 servo = Servo()
 
+
+def set_default():
+	servo.set(4, 180)
+	time.sleep(0.05)
+	servo.set(3, 85)
+	time.sleep(0.05)
+	servo.set(1, 180)
+	time.sleep(0.05)
+	servo.set(2, 150)
+	time.sleep(0.05)
+
+def grup_item():
+	servo.set(1, 120)
+	time.sleep(0.05)
+	servo.set(3, 40)
+	time.sleep(0.05)
+	servo.set(4, 90)
+	time.sleep(0.05)
+	servo.set(2, 60)
+	time.sleep(0.05)
+
+	time.sleep(0.3)
+	servo.set(1, 90)
+	time.sleep(0.2)
+	servo.set(3, 80)
+	time.sleep(0.3)
+	servo.set(2, 130)
+	time.sleep(0.2)
+	servo.set(4, 180)
+	set_default()
+
+
 class PS2(object):
 	def __init__(self):
 		pass
@@ -96,12 +128,13 @@ class PS2(object):
 				cfg.PS2_LASTKEY = read_ps2
 
 			if read_ps2 == cfg.PS2_KEY['PSB_RED']:  # 等于红色按键
+				grub_item()
 				# print('PSB_RED')
-				if (cfg.ANGLE[6] - add) < 180:
-					cfg.ANGLE[6] = cfg.ANGLE[6] + add
-				else:
-					cfg.ANGLE[6] = 180
-				servo.set(7, cfg.ANGLE[6])
+				# if (cfg.ANGLE[6] - add) < 180:
+				# 	cfg.ANGLE[6] = cfg.ANGLE[6] + add
+				# else:
+				# 	cfg.ANGLE[6] = 180
+				# servo.set(7, cfg.ANGLE[6])
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_PINK']:  # 等于粉色按键
 				# print('PSB_BLUE')
