@@ -74,6 +74,11 @@ def put_item_into_basket():
 	time.sleep(0.50)
 	set_default()
 
+def press_button():
+	servo.set(1, 60)
+	time.sleep(0.6)
+	set_default()
+
 class PS2(object):
 	def __init__(self):
 		pass
@@ -161,17 +166,19 @@ class PS2(object):
 				# servo.set(7, cfg.ANGLE[6])
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_GREEN']:  # 等于绿色按键
+				press_button()
 				# print('PSB_GREEN')
-				if (cfg.ANGLE[7] - add) < 155:
-					cfg.ANGLE[7] = cfg.ANGLE[7] + add
-				else:
-					cfg.ANGLE[7] = 155
-				servo.set(8, cfg.ANGLE[7])
+				# if (cfg.ANGLE[7] - add) < 155:
+				# 	cfg.ANGLE[7] = cfg.ANGLE[7] + add
+				# else:
+				# 	cfg.ANGLE[7] = 155
+				# servo.set(8, cfg.ANGLE[7])
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_BLUE']:  # 等于蓝色按键
+				set_default()
 				# print('PSB_PINK')
-				if (cfg.ANGLE[7] - add) > 0:
-					cfg.ANGLE[7] = cfg.ANGLE[7] - add
-				else:
-					cfg.ANGLE[7] = 0
-				servo.set(8, cfg.ANGLE[7])
+				# if (cfg.ANGLE[7] - add) > 0:
+				# 	cfg.ANGLE[7] = cfg.ANGLE[7] - add
+				# else:
+				# 	cfg.ANGLE[7] = 0
+				# servo.set(8, cfg.ANGLE[7])
