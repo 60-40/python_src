@@ -45,8 +45,8 @@ except:
     print('oled initialization fail')
 from xr_music import Beep
 beep = Beep()
-from xr_power import Power
-power = Power()
+#from xr_power import Power
+#power = Power()
 from xr_servo import Servo
 servo = Servo()
 from xr_ps2 import PS2
@@ -216,7 +216,9 @@ def status():
 					car_light.close_light()
 		if cfg.LOOPS > 100:  		# 定时器设定的是0.01秒进入一次，大于100表明自增了100次即1秒时间，一些不需要更新太快的数据显示函数可放这里
 			cfg.LOOPS = 0			# 清除LOOPS
-			power.show_vol()    	# 电量灯条电量显示
+			#power.show_vol()    	# 电量灯条电量显示
+			
+			car_light.set_ledgroup(cfg.POWER_LIGHT, 8, cfg.COLOR['yellow'])  # 设置电量灯条为绿色
 			try:
 				oled.disp_cruising_mode()  	# oled显示模式
 			except:
