@@ -62,4 +62,29 @@ def avoid_walls():
 			time.sleep(0.2)
 			go.stop()
 			lock.release()
+		l, r = inf.get_ir()
+		if l and r or not l and r:
+			lock.acquire()
+			go.stop()
+			cfg.LEFT = 30
+			cfg.RIGHT = 30
+			go.back()
+			time.sleep(0.35)
+			go.left()
+			time.sleep(0.2)
+			go.stop()
+			lock.release()
+		if l and not r:
+			lock.acquire()
+			go.stop()
+			cfg.LEFT = 30
+			cfg.RIGHT = 30
+			go.back()
+			time.sleep(0.35)
+			go.right()
+			time.sleep(0.2)
+			go.stop()
+			lock.release()
+	
+
 		time.sleep(0.05)		
