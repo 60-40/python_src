@@ -38,6 +38,7 @@ def set_default():
 	servo.set(2, 150)
 	time.sleep(0.25)
 
+
 def grub_item():
 	servo.set(1, 120)
 	time.sleep(0.25)
@@ -58,6 +59,20 @@ def grub_item():
 	servo.set(4, 180)
 	set_default()
 
+
+def put_item_into_basket():
+	servo.set(1, 130)
+	time.sleep(0.25)
+	servo.set(2, 80)
+	time.sleep(0.70)
+	servo.set(4, 80)
+	time.sleep(0.70)
+	servo.set(3, 40)
+	time.sleep(0.70)
+	servo.set(3, 85)
+	servo.set(4, 180)
+	time.sleep(0.50)
+	set_default()
 
 class PS2(object):
 	def __init__(self):
@@ -137,12 +152,13 @@ class PS2(object):
 				# servo.set(7, cfg.ANGLE[6])
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_PINK']:  # 等于粉色按键
+				put_item_into_basket()
 				# print('PSB_BLUE')
-				if (cfg.ANGLE[6] - add) > 0:
-					cfg.ANGLE[6] = cfg.ANGLE[6] - add
-				else:
-					cfg.ANGLE[6] = 0
-				servo.set(7, cfg.ANGLE[6])
+				# if (cfg.ANGLE[6] - add) > 0:
+				# 	cfg.ANGLE[6] = cfg.ANGLE[6] - add
+				# else:
+				# 	cfg.ANGLE[6] = 0
+				# servo.set(7, cfg.ANGLE[6])
 
 			elif read_ps2 == cfg.PS2_KEY['PSB_GREEN']:  # 等于绿色按键
 				# print('PSB_GREEN')
