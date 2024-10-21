@@ -38,7 +38,7 @@ def set_default():
 	servo.set(2, 150)
 	time.sleep(0.05)
 
-def grup_item():
+def grub_item():
 	servo.set(1, 120)
 	time.sleep(0.05)
 	servo.set(3, 40)
